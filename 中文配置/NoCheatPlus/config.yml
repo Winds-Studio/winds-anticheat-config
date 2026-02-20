@@ -24,7 +24,7 @@ logging:
       filename: nocheatplus.log
     ingame-chat:
       active: true
-      prefix: "&f[&cNC+&f] &7 "
+      prefix: "&c&lWATCHDOG &7»&r "
 data:
   expiration:
     active: false
@@ -49,7 +49,7 @@ permissions:
 protection:
   plugins:
     hide:
-      active: true
+      active: false
       no-permission:
         message: "&c真抱歉你不能使用该指令."
         commands:
@@ -92,7 +92,7 @@ checks:
   lag: true
   debug: false
   blockbreak:
-    active: default
+    active: false
     direction:
       active: default
       actions: cancel
@@ -125,7 +125,7 @@ checks:
         weight: 2.0
       actions: cancel vl>5 log:bwrong:2:5:i cancel vl>15 cancel log:bwrong:0:5:if cmdc:kickwb:0:5
   blockinteract:
-    active: default
+    active: false
     direction:
       active: default
       actions: cancel vl>5 cancel log:bdirection:4:8:i vl>25 cancel log:bdirection:1:5:if cmdc:kickillegalblockinteract:1:5
@@ -141,7 +141,7 @@ checks:
       active: default
       actions: cancel vl>30 log:bvisible:8:5:if cancel
   blockplace:
-    active: default
+    active: false
     boats-on-water-only: false
     against:
       active: default
@@ -197,7 +197,7 @@ checks:
         weight: 0.3
       actions: cancel vl>80 log:bpspeed:6:7:i cancel vl>800 log:bpspeed:3:5:if cancel
   chat:
-    active: true
+    active: false
     captcha:
       active: "true"
       skip:
@@ -309,7 +309,7 @@ checks:
       limit: 6
       kick-message: 太多玩家同时登录，请稍后重试.
   combined:
-    active: default
+    active: false
     enderpearl:
       active: true
       prevent-click-on-block: true
@@ -338,7 +338,7 @@ checks:
         feed-only: false
         weight: 90.0
   fight:
-    active: default
+    active: false
     cancel-dead: true
     enforce-item-release: true
     enforce-closed-inventory: true
@@ -396,7 +396,7 @@ checks:
       active: default
       actions: cancel vl>30 log:fvisible:8:5:if cancel
   inventory:
-    active: default
+    active: false
     fastclick:
       active: default
       exclude:
@@ -449,8 +449,8 @@ checks:
             speed: 100
           vertical:
             ascend:
-              speed: 100
-            max-height: 128
+              speed: 1600
+            max-height: 320
         spectator:
           horizontal:
             speed: 450
@@ -461,7 +461,7 @@ checks:
           ground: false
       actions: cancel log:flyfile:3:5:f vl>100 cancel log:creativefly:8:9:i log:flyfile:0:10:f vl>900 cancel log:creativefly:2:4:i log:flyfile:0:5:cf vl>2000 cancel log:creativefly:0:5:icf cmdc:kickfly:0:15
     morepackets:
-      active: default
+      active: false
       seconds: 2
       eps-ideal: 20
       eps-max: 22
@@ -472,8 +472,8 @@ checks:
       setbackage: 110
       actions: cancel vl>2 cancel log:morepackets:10:9:i vl>100 cancel log:morepackets:0:2:ifc cmdc:kickpackets:0:10
     nofall:
-      active: default
-      deal-damage: true
+      active: false
+      deal-damage: false
       skip-allow-flight: true
       reset-on-violation: true
       reset-on-teleport: true
@@ -481,7 +481,7 @@ checks:
       anti-criticals: true
       actions: cancel vl>2 cancel log:nofall:0:5:if
     passable:
-      active: default
+      active: false
       actions: cancel vl>15 cancel log:passable:7:9:i vl>100 cancel log:passable:1:4:if
       untracked:
         teleport:
@@ -506,7 +506,7 @@ checks:
           - tphere
     survivalfly:
       active: default
-      stepheight: default
+      stepheight: 5
       extended:
         reset-activeitem: true
         strict-speed-prediction: true
@@ -514,17 +514,17 @@ checks:
         violationfrequency:
           active: true
           debug: false
-          max-threshold-vl: 12
+          max-threshold-vl: 50
           no-addition-vl: 5
-          amount-to-add: 5
+          amount-to-add: 1
           last-violated-move-count: 10
-        freeze-count: 40
-        freeze-inair: true
+        freeze-count: 60
+        freeze-inair: false
       setback-policy:
-        falldamage: true
-      actions: cancel log:flyfile:6:15:f vl>50 cancel log:survivalfly:10:11:i log:flyfile:6:15:f vl>300 cancel log:survivalfly:8:5:i log:flyfile:1:3:f vl>700 cancel log:survivalflyhighvl:0:4:icf cmdc:kickfly:0:15
+        falldamage: false
+      actions: vl>800 cancel log:survivalfly:8:5:i log:flyfile:1:3:f vl>2100 cancel log:survivalflyhighvl:0:4:icf vl>5500 cancel vl>7000 cancel vl>8000 cancel vl>25000 cancel log:highvlerror:0:2:ic
       hover:
-        active: true
+        active: false
         step: 4
         ticks: 115
         login-ticks: 60
@@ -534,10 +534,10 @@ checks:
       max-age: 30
       max-size: 30
     velocity:
-      activation-counter: 20
+      activation-counter: 80
       activation-ticks: 140
     ignore-stance: default
-    temp-kick-illegal: true
+    temp-kick-illegal: false
     loadchunks:
       join: true
       move: false
@@ -549,23 +549,23 @@ checks:
       method: default
     vehicle:
       prevent-destroy-own: true
-      enforce-location: default
+      enforce-location: false
       schedule-setbacks: default
       schedule-set-passenger: default
       morepackets:
-        active: default
+        active: false
         actions: cancel vl>2 log:morepackets:2:5:if cancel vl>100 cancel log:morepackets:1:2:if cmdc:kickpackets:2:10
       envelope:
         active: default
         hdist-cap:
-          default: 0.9
-          pig: 0.3
-        actions: cancel vl>50 cancel log:vehicleenvelope:10:6:if vl>300 cancel log:vehicleenvelope:0:10:if cmdc:kickvehiclefly:0:10
+          default: 30
+          pig: 10
+        actions: vl>700 cancel log:vehicleenvelope:0:10:if cmd:clearvehicle:0:15
     message:
       illegal-player-move: 不正常的移动方式
       illegal-vehicle-move: 不正常的移动方式
   net:
-    active: default
+    active: false
     attackfrequency:
       active: default
       limitforseconds:
@@ -730,10 +730,15 @@ compatibility:
     override-flags:
       snow: default
       moving_piston: default+ign_passable+ground_height
+      slime_block: default+ign_passable+ground_height+F_SLIME+F_BOUNCE25+F_ALLOW_LOWJUMP
+      lily_pad: default+ign_passable+ground_height+height8_1
+      soul_sand: F_GROUND
+      honey_block: F_GROUND
+      # slime_block: F_GROUND
     block-cache:
       minimal-world-Y: -64
     change-tracker:
-      active: true
+      active: false
       pistons: true
       max-age-icks: 20
       perworld:
